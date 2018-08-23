@@ -8,3 +8,13 @@ C:\Users\DiegoFerreira\source\repos\WFAgenda\WFAgenda\obj\Debug\WFAgenda.csproj.
 C:\Users\DiegoFerreira\source\repos\WFAgenda\WFAgenda\obj\Debug\WFAgenda.csproj.CoreCompileInputs.cache
 C:\Users\DiegoFerreira\source\repos\WFAgenda\WFAgenda\obj\Debug\WFAgenda.exe
 C:\Users\DiegoFerreira\source\repos\WFAgenda\WFAgenda\obj\Debug\WFAgenda.pdb
+C:\Users\DiegoFerreira\source\repos\Crud-Ado_Net\WFAgenda\WFAgenda\bin\Debug\WFAgenda.exe.config
+C:\Users\DiegoFerreira\source\repos\Crud-Ado_Net\WFAgenda\WFAgenda\bin\Debug\WFAgenda.exe
+C:\Users\DiegoFerreira\source\repos\Crud-Ado_Net\WFAgenda\WFAgenda\bin\Debug\WFAgenda.pdb
+C:\Users\DiegoFerreira\source\repos\Crud-Ado_Net\WFAgenda\WFAgenda\obj\Debug\WFAgenda.csprojAssemblyReference.cache
+C:\Users\DiegoFerreira\source\repos\Crud-Ado_Net\WFAgenda\WFAgenda\obj\Debug\WFAgenda.FormAgenda.resources
+C:\Users\DiegoFerreira\source\repos\Crud-Ado_Net\WFAgenda\WFAgenda\obj\Debug\WFAgenda.Properties.Resources.resources
+C:\Users\DiegoFerreira\source\repos\Crud-Ado_Net\WFAgenda\WFAgenda\obj\Debug\WFAgenda.csproj.GenerateResource.cache
+C:\Users\DiegoFerreira\source\repos\Crud-Ado_Net\WFAgenda\WFAgenda\obj\Debug\WFAgenda.csproj.CoreCompileInputs.cache
+C:\Users\DiegoFerreira\source\repos\Crud-Ado_Net\WFAgenda\WFAgenda\obj\Debug\WFAgenda.exe
+C:\Users\DiegoFerreira\source\repos\Crud-Ado_Net\WFAgenda\WFAgenda\obj\Debug\WFAgenda.pdb

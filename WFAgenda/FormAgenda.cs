@@ -71,16 +71,56 @@ namespace WFAgenda
                 try
                 {
                     cmd = new SqlCommand("insert into Contatos(nome,endereco,celular,telefone,email)" +
-                    "values ('@nome','@endereco','@celular','@telefone','@email')", con);
+                    "values (@nome, @endereco, @celular, @telefone, @email)", con);
 
                     con.Open();
 
                     cmd.Parameters.AddWithValue("@nome", txtNome.Text.ToUpper());
-                    cmd.Parameters.AddWithValue("");
+                    cmd.Parameters.AddWithValue("@endereco", txtEndereco.Text.ToUpper());
+                    cmd.Parameters.AddWithValue("@celular", txtCelular.Text.ToUpper());
+                    cmd.Parameters.AddWithValue("@telefone", txtTelefone.Text.ToUpper());
+                    cmd.Parameters.AddWithValue("@email", txtEmail.Text.ToLower());
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Cadastro realizado com Sucesso!");
 
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro: " + ex.Message);
+
+                }
+                finally
+                {
+                    con.Close();
+                    ListarTodos();
+                    LimparDados();
+                    
                 }
             }
 
+            else
+            {
+                MessageBox.Show("Informe todos os dados requeridos!");
+            }
+
         }
+
+
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void LimparDados()
+        {
+            txtNome.Text = "";
+            txtEndereco.Text = "";
+            txtCelular.Text = "";
+            txtTelefone.Text = "";
+            txtEmail.Text = "";
+        }
+
+
     }
 }
