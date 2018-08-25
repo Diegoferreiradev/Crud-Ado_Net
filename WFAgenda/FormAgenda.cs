@@ -15,10 +15,10 @@ namespace WFAgenda
     public partial class FormAgenda : Form
     {
 
-        SqlConnection con = new SqlConnection("Data Source=ADDServidor; Initial Catalog=db_Contatos; Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=AddServidor; Initial Catalog=db_Contatos; Integrated Security=True");
         SqlCommand cmd;
         SqlDataAdapter adapt;
-        int ID = 0;
+        int ID = 2;
 
         public FormAgenda()
         {
@@ -32,7 +32,7 @@ namespace WFAgenda
             {
                 con.Open();
                 DataTable dt = new DataTable();
-                adapt = new SqlDataAdapter("select * from Contatos", con);
+                adapt = new SqlDataAdapter("SELECT * FROM Contatos", con);
                 adapt.Fill(dt);
                 dgvAgenda.DataSource = dt;
 
@@ -48,11 +48,6 @@ namespace WFAgenda
             }
         }
 
-
-        private void FormAgenda_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
@@ -70,8 +65,8 @@ namespace WFAgenda
             {
                 try
                 {
-                    cmd = new SqlCommand("insert into Contatos(nome,endereco,celular,telefone,email)" +
-                    "values (@nome, @endereco, @celular, @telefone, @email)", con);
+                    cmd = new SqlCommand("INSERT INTO Contatos(nome,endereco,celular,telefone,email)" +
+                    "VALUES (@nome, @endereco, @celular, @telefone, @email)", con);
 
                     con.Open();
 
@@ -108,7 +103,38 @@ namespace WFAgenda
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
+            if (txtNome.Text != "" && txtEndereco.Text != "" && txtCelular.Text != "" && txtTelefone.Text != "" && txtEmail.Text != "")
+            {
+                try
+                {
+                    cmd = new SqlCommand("UPDATE Contatos SET nome=@nome, endereco=@endereco, celular=@celular, telefone=@telefone, email=@email WHERE id=@id" , con);
+                    con.Open();
 
+                    cmd.Parameters.AddWithValue("@id", ID);
+                    cmd.Parameters.AddWithValue("@nome", txtNome.Text.ToUpper());
+                    cmd.Parameters.AddWithValue("@endereco", txtEndereco.Text.ToUpper());
+                    cmd.Parameters.AddWithValue("@celular", txtCelular.Text.ToUpper());
+                    cmd.Parameters.AddWithValue("@telefone", txtTelefone.Text.ToUpper());
+                    cmd.Parameters.AddWithValue("@email", txtEmail.Text.ToLower());
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Os dados foram atualizados com Sucesso!");
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro: " + ex.Message);
+                }
+                finally
+                {
+                    con.Close();
+                    ListarTodos();
+                    LimparDados();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Informe todos os dados Requeridos!");
+            }
         }
 
 
@@ -119,6 +145,11 @@ namespace WFAgenda
             txtCelular.Text = "";
             txtTelefone.Text = "";
             txtEmail.Text = "";
+        }
+
+        private void FormAgenda_Load(object sender, EventArgs e)
+        {
+
         }
 
 
