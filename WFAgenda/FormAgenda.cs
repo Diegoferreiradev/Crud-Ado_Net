@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace WFAgenda
 {
@@ -147,11 +140,60 @@ namespace WFAgenda
             txtEmail.Text = "";
         }
 
+
+        private void btnRemover_Click(object sender, EventArgs e)
+        {
+            if (txtNome.Text != "" && txtEndereco.Text != "" && txtCelular.Text != "" && txtTelefone.Text != "" && txtEmail.Text != "")
+            {
+
+                try
+                {
+
+                    cmd = new SqlCommand("DELETE Contatos WHERE id=@id", con);
+
+                    con.Open();
+                    cmd.Parameters.AddWithValue("@id", ID);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Os dados foram Removidos!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro: " + ex.Message);
+                }
+                finally
+                {
+                    con.Close();
+                    ListarTodos();
+                    LimparDados();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Selecione  um registro para Deletar!");
+            }
+        }
+
         private void FormAgenda_Load(object sender, EventArgs e)
         {
 
         }
 
+        //private void dgvAgenda_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    try
+        //    {
+        //        ID = Convert.ToInt32(dgvAgenda.Rows[e.RowIndex].Cells[0].Value.ToString());
+        //        txtNome.Text = dgvAgenda.Rows[e.RowIndex].Cells[1].Value.ToString();
+        //        txtEndereco.Text = dgvAgenda.Rows[e.RowIndex].Cells[2].Value.ToString();
+        //        txtCelular.Text = dgvAgenda.Rows[e.RowIndex].Cells[3].Value.ToString();
+        //        txtTelefone.Text = dgvAgenda.Rows[e.RowIndex].Cells[4].Value.ToString();
+        //        txtEmail.Text = dgvAgenda.Rows[e.RowIndex].Cells[5].Value.ToString();
+        //    }
+        //    catch
+        //    {
 
+        //    }
+        //}
     }
 }
